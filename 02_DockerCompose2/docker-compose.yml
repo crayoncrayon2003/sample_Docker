@@ -1,0 +1,49 @@
+version: '3.4'
+
+services:
+  NodeA:
+    build:
+      context: ./nodeA
+      dockerfile: Dockerfile
+    image: custom_node
+    restart: always
+    container_name: node_a
+    networks:
+      node_AB_net:
+        ipv4_address: 192.168.1.2
+
+  NodeB:
+    build:
+      context: ./nodeB
+      dockerfile: Dockerfile
+    image: custom_node
+    restart: always
+    container_name: node_b
+    networks:
+      node_AB_net:
+        ipv4_address: 192.168.1.3
+      node_BC_net:
+        ipv4_address: 192.168.2.2
+
+  NodeC:
+    build:
+      context: ./nodeC
+      dockerfile: Dockerfile
+    image: custom_node
+    restart: always
+    container_name: node_c
+    networks:
+      node_BC_net:
+        ipv4_address: 192.168.2.3
+
+networks:
+  node_AB_net:
+    name: node_AB_net
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+  node_BC_net:
+    name: node_BC_net
+    ipam:
+      config:
+        - subnet: 192.168.2.0/24
