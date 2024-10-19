@@ -1,11 +1,11 @@
 # show containers
 ```
-sudo docker images
+docker ps -s
 ```
 
 # show images
 ```
-sudo docker images
+docker images
 ```
 
 # show network
@@ -16,7 +16,7 @@ docker network ls
 
 # build image
 ```
-sudo docker build . -t my-ubuntu-image
+docker build . -t my-ubuntu-image
 ```
 
 # run container
@@ -58,5 +58,5 @@ docker rmi my-ubuntu-image
 
 # remove the network
 ```
-docker network rm <Networ Name>
+docker network rm <Network Name>
 ```
