@@ -71,6 +71,15 @@ docker compose down
 ```
 
 # Others
+## case :  log output
+```
+docker logs <container id or container name> > log.txt
+```
+
+```
+docker compose up > log.txt 2>&1
+```
+
 ## case :  memory is insufficient
 ```
 ulimit -n 25536 in /etc/init.d/docker
