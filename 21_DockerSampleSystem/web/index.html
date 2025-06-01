@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>prefecture list</title>
+</head>
+<body>
+  <h1>prefecture list</h1>
+  <ul id="list"></ul>
+
+  <script>
+    fetch('/api/prefectures')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('list');
+        data.prefectures.forEach(pref => {
+          const li = document.createElement('li');
+          li.textContent = pref;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
